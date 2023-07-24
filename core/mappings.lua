@@ -2,6 +2,9 @@ local keymap = vim.keymap
 local api = vim.api
 local uv = vim.loop
 
+-- Open file tree with leader key + 'n'
+keymap.set("n", "<leader>n", ":NvimTreeOpen<CR>")
+
 -- Save key strokes (now we do not need to press shift to enter command mode).
 keymap.set({ "n", "x" }, ";", ":")
 
