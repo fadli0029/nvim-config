@@ -47,20 +47,20 @@ packer.startup {
 
     use { "onsails/lspkind-nvim", event = "VimEnter" }
     -- auto-completion engine
-    use { "hrsh7th/nvim-cmp", after = "lspkind-nvim", config = [[require('config.nvim-cmp')]] }
+    -- use { "hrsh7th/nvim-cmp", after = "lspkind-nvim", config = [[require('config.nvim-cmp')]] }
 
-    -- nvim-cmp completion sources
-    use { "hrsh7th/cmp-nvim-lsp", after = "nvim-cmp" }
-    use { "hrsh7th/cmp-path", after = "nvim-cmp" }
-    use { "hrsh7th/cmp-buffer", after = "nvim-cmp" }
-    use { "hrsh7th/cmp-omni", after = "nvim-cmp" }
-    use { "quangnguyen30192/cmp-nvim-ultisnips", after = { "nvim-cmp", "ultisnips" } }
-    if vim.g.is_mac then
-      use { "hrsh7th/cmp-emoji", after = "nvim-cmp" }
-    end
+    -- -- nvim-cmp completion sources
+    -- use { "hrsh7th/cmp-nvim-lsp", after = "nvim-cmp" }
+    -- use { "hrsh7th/cmp-path", after = "nvim-cmp" }
+    -- use { "hrsh7th/cmp-buffer", after = "nvim-cmp" }
+    -- use { "hrsh7th/cmp-omni", after = "nvim-cmp" }
+    -- use { "quangnguyen30192/cmp-nvim-ultisnips", after = { "nvim-cmp", "ultisnips" } }
+    -- if vim.g.is_mac then
+    --   use { "hrsh7th/cmp-emoji", after = "nvim-cmp" }
+    -- end
 
-    -- nvim-lsp configuration (it relies on cmp-nvim-lsp, so it should be loaded after cmp-nvim-lsp).
-    use { "neovim/nvim-lspconfig", after = "cmp-nvim-lsp", config = [[require('config.lsp')]] }
+    -- -- nvim-lsp configuration (it relies on cmp-nvim-lsp, so it should be loaded after cmp-nvim-lsp).
+    -- use { "neovim/nvim-lspconfig", after = "cmp-nvim-lsp", config = [[require('config.lsp')]] }
 
     if vim.g.is_mac then
       use {
@@ -105,11 +105,11 @@ packer.startup {
     }
 
     -- File search, tag search and more
-    if vim.g.is_win then
-      use { "Yggdroot/LeaderF", cmd = "Leaderf" }
-    else
-      use { "Yggdroot/LeaderF", cmd = "Leaderf", run = ":LeaderfInstallCExtension" }
-    end
+    -- if vim.g.is_win then
+    --   use { "Yggdroot/LeaderF", cmd = "Leaderf" }
+    -- else
+    --   use { "Yggdroot/LeaderF", cmd = "Leaderf", run = ":LeaderfInstallCExtension" }
+    -- end
 
     use {
       "nvim-telescope/telescope.nvim",
