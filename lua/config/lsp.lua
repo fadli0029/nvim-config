@@ -109,7 +109,8 @@ local custom_attach = function(client, bufnr)
   end
 end
 
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
+-- Deactivate cmp-nvim-lsp capabilities bcoz im using Github Copilot
+-- local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 local lspconfig = require("lspconfig")
 
@@ -177,6 +178,7 @@ if utils.executable("clangd") then
     flags = {
       debounce_text_changes = 500,
     },
+    compilationDatabasePath = './build/'
   }
 end
 

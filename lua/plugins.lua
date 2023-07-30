@@ -61,6 +61,7 @@ packer.startup {
 
     -- -- nvim-lsp configuration (it relies on cmp-nvim-lsp, so it should be loaded after cmp-nvim-lsp).
     -- use { "neovim/nvim-lspconfig", after = "cmp-nvim-lsp", config = [[require('config.lsp')]] }
+    use { "neovim/nvim-lspconfig", config = [[require('config.lsp')]] }
 
     if vim.g.is_mac then
       use {
@@ -328,6 +329,15 @@ packer.startup {
     if vim.g.is_win or vim.g.is_linux then
       use { "sakhnik/nvim-gdb", run = { "bash install.sh" }, opt = true, setup = [[vim.cmd('packadd nvim-gdb')]] }
     end
+
+    -- Ale linter plugin
+    -- use {
+    --   "dense-analysis/ale",
+    --   opt = true,
+    --   cmd = { "ALEEnable", "ALEDisable" },
+    --   setup = [[vim.cmd('packadd ale')]],
+    --   config = [[require('config.ale')]],
+    -- }
 
     -- Session management plugin
     use { "tpope/vim-obsession", cmd = "Obsession" }

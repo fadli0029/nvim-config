@@ -359,6 +359,14 @@ endif
 """"""""""""""""""""""""""""""nvim-gdb settings""""""""""""""""""""""""""""""
 nnoremap <leader>dp :<C-U>GdbStartPDB python -m pdb %<CR>
 
+""""""""""""""""""""""""""""""Ale settings"""""""""""""""""""""""""""""""""""
+let g:ale_linters = {
+    \ 'python': ['pylint'],
+    \ 'vim': ['vint'],
+    \ 'cpp': ['clang'],
+    \ 'c': ['clang']
+\}
+
 """"""""""""""""""""""""""""""wilder.nvim settings""""""""""""""""""""""""""""""
 call timer_start(250, { -> s:wilder_init() })
 
