@@ -6,8 +6,8 @@ local uv = vim.loop
 keymap.set("n", "<leader>n", ":NvimTreeOpen<CR>")
 
 -- Switch to previous tab with Ctrl+h and next tab with Ctrl+l
-keymap.set("n", "<C-h>", ":bnext<CR>")
-keymap.set("n", "<C-l>", ":bprev<CR>")
+-- keymap.set("n", "<C-h>", ":bnext<CR>")
+-- keymap.set("n", "<C-l>", ":bprev<CR>")
 
 -- Save key strokes (now we do not need to press shift to enter command mode).
 keymap.set({ "n", "x" }, ";", ":")
