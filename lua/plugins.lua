@@ -61,7 +61,7 @@ packer.startup {
 
     -- -- nvim-lsp configuration (it relies on cmp-nvim-lsp, so it should be loaded after cmp-nvim-lsp).
     -- use { "neovim/nvim-lspconfig", after = "cmp-nvim-lsp", config = [[require('config.lsp')]] }
-    use { "neovim/nvim-lspconfig", config = [[require('config.lsp')]] }
+    -- use { "neovim/nvim-lspconfig", config = [[require('config.lsp')]] }
 
     if vim.g.is_mac then
       use {
@@ -106,11 +106,11 @@ packer.startup {
     }
 
     -- File search, tag search and more
-    -- if vim.g.is_win then
-    --   use { "Yggdroot/LeaderF", cmd = "Leaderf" }
-    -- else
-    --   use { "Yggdroot/LeaderF", cmd = "Leaderf", run = ":LeaderfInstallCExtension" }
-    -- end
+    if vim.g.is_win then
+      use { "Yggdroot/LeaderF", cmd = "Leaderf" }
+    else
+      use { "Yggdroot/LeaderF", cmd = "Leaderf", run = ":LeaderfInstallCExtension" }
+    end
 
     use {
       "nvim-telescope/telescope.nvim",
