@@ -15,6 +15,11 @@ call utils#Cabbrev('ps', 'PackerSync')
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                      configurations for vim script plugin                  "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""Telescope settings"""""""""""""""""""
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 """""""""""""""""""""""""UltiSnips settings"""""""""""""""""""
 " Trigger configuration. Do not use <tab> if you use YouCompleteMe
@@ -246,9 +251,21 @@ if executable('latex')
     autocmd FileType tex nmap <buffer> <F9> <plug>(vimtex-compile)
   augroup END
 
+  let g:vimtex_view_method = 'zathura'
   let g:vimtex_compiler_latexmk = {
-        \ 'build_dir' : 'build',
-        \ }
+      \ 'options' : [
+      \   '-pdf',
+      \   '-pvc',
+      \   '-view=none',
+      \   '-interaction=nonstopmode',
+      \   '-synctex=1',
+      \ ],
+      \}
+
+
+  " let g:vimtex_compiler_latexmk = {
+  "       \ 'build_dir' : 'build',
+  "       \ }
 
   " TOC settings
   let g:vimtex_toc_config = {
@@ -263,34 +280,34 @@ if executable('latex')
         \ }
 
   " Viewer settings for different platforms
-  if g:is_win
-    let g:vimtex_view_general_viewer = 'SumatraPDF'
-    let g:vimtex_view_general_options = '-reuse-instance -forward-search @tex @line @pdf'
-  endif
+  " if g:is_win
+  "   let g:vimtex_view_general_viewer = 'SumatraPDF'
+  "   let g:vimtex_view_general_options = '-reuse-instance -forward-search @tex @line @pdf'
+  " endif
 
-  if g:is_mac
-    " let g:vimtex_view_method = "skim"
-    let g:vimtex_view_general_viewer = '/Applications/Skim.app/Contents/SharedSupport/displayline'
-    let g:vimtex_view_general_options = '-r @line @pdf @tex'
+  " if g:is_mac
+  "   let g:vimtex_view_method = "skim"
+  "   let g:vimtex_view_general_viewer = '/Applications/Skim.app/Contents/SharedSupport/displayline'
+  "   let g:vimtex_view_general_options = '-r @line @pdf @tex'
 
-    augroup vimtex_mac
-      autocmd!
-      autocmd User VimtexEventCompileSuccess call UpdateSkim()
-    augroup END
+  "   augroup vimtex_mac
+  "     autocmd!
+  "     autocmd User VimtexEventCompileSuccess call UpdateSkim()
+  "   augroup END
 
-    " The following code is adapted from https://gist.github.com/skulumani/7ea00478c63193a832a6d3f2e661a536.
-    function! UpdateSkim() abort
-      let l:out = b:vimtex.out()
-      let l:src_file_path = expand('%:p')
-      let l:cmd = [g:vimtex_view_general_viewer, '-r']
+  "   " The following code is adapted from https://gist.github.com/skulumani/7ea00478c63193a832a6d3f2e661a536.
+  "   function! UpdateSkim() abort
+  "     let l:out = b:vimtex.out()
+  "     let l:src_file_path = expand('%:p')
+  "     let l:cmd = [g:vimtex_view_general_viewer, '-r']
 
-      if !empty(system('pgrep Skim'))
-        call extend(l:cmd, ['-g'])
-      endif
+  "     if !empty(system('pgrep Skim'))
+  "       call extend(l:cmd, ['-g'])
+  "     endif
 
-      call jobstart(l:cmd + [line('.'), l:out, l:src_file_path])
-    endfunction
-  endif
+  "     call jobstart(l:cmd + [line('.'), l:out, l:src_file_path])
+  "   endfunction
+  " endif
 endif
 
 """"""""""""""""""""""""""""vim-matchup settings"""""""""""""""""""""""""""""
