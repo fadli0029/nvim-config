@@ -12,7 +12,6 @@ nvim_tree.setup {
   update_cwd = false,
   view = {
     width = 30,
-    hide_root_folder = false,
     side = "left",
     preserve_window_proportions = false,
     number = false,
@@ -37,6 +36,7 @@ nvim_tree.setup {
     icons = {
       webdev_colors = true,
     },
+    root_folder_label = "", -- see https://github.com/nvim-tree/nvim-tree.lua/issues/1808
   },
   hijack_directories = {
     enable = true,
