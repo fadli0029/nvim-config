@@ -121,3 +121,9 @@ augroup END
 
 " Load auto-command defined in Lua
 lua require("custom-autocmd")
+
+" Disable copilot when not in leetcode directory
+augroup copilot_disable
+  autocmd!
+  autocmd BufReadPost,BufNewFile * if match(getcwd(), '^/home/fade0329/leetcode') == 0 | Copilot disable | endif
+augroup END
