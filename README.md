@@ -6,7 +6,7 @@ Leader key is `,`.
 
 ## Quick Start
 
-Essential keybindings to learn first:
+These are some essential keybindings.
 
 **Code Understanding**
 - `K` - Hover documentation for symbol under cursor
