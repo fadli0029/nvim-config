@@ -63,6 +63,19 @@ local plugin_specs = {
     end,
   },
 
+  -- Code annotation plugin
+  {
+    "fadli0029/aside.nvim",
+    dir = "/home/magomed_fadliov/Projects/aside.nvim",
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+    },
+    event = "VeryLazy",
+    config = function()
+      require("config.aside")
+    end,
+  },
+
   {
     "folke/zen-mode.nvim",
     opts = {
