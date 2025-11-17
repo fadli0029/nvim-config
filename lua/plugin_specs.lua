@@ -66,7 +66,6 @@ local plugin_specs = {
   -- Code annotation plugin
   {
     "fadli0029/aside.nvim",
-    dir = "/home/magomed_fadliov/Projects/aside.nvim",
     dependencies = {
       "MunifTanjim/nui.nvim",
       "kkharji/sqlite.lua",
