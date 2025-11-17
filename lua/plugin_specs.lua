@@ -69,6 +69,7 @@ local plugin_specs = {
     dir = "/home/magomed_fadliov/Projects/aside.nvim",
     dependencies = {
       "MunifTanjim/nui.nvim",
+      "kkharji/sqlite.lua",
     },
     event = "VeryLazy",
     config = function()
