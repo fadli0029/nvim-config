@@ -25,4 +25,9 @@ require('aside').setup({
     icon = '󰍨 ',
     text = ' [note]',
   },
+
+  -- LSP integration
+  lsp = {
+    hover = true,
+  },
 })
