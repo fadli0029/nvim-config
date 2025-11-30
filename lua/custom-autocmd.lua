@@ -204,6 +204,16 @@ api.nvim_create_autocmd("ColorScheme", {
   pattern = "*",
   desc = "Define or overrride some highlight groups",
   callback = function()
+    -- Pitch black background for OLED
+    vim.api.nvim_set_hl(0, "Normal", { bg = "#000000" })
+    vim.api.nvim_set_hl(0, "NormalNC", { bg = "#000000" })
+    vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#000000" })
+    vim.api.nvim_set_hl(0, "SignColumn", { bg = "#000000" })
+    vim.api.nvim_set_hl(0, "EndOfBuffer", { fg = "#000000", bg = "#000000" })
+    vim.api.nvim_set_hl(0, "LineNr", { bg = "#000000" })
+    vim.api.nvim_set_hl(0, "CursorLineNr", { bg = "#000000" })
+    vim.api.nvim_set_hl(0, "FoldColumn", { bg = "#000000" })
+
     vim.cmd([[
       " For yank highlight
       highlight YankColor ctermfg=59 ctermbg=41 guifg=#34495E guibg=#2ECC71
