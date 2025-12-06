@@ -70,6 +70,16 @@ K               Hover documentation
 f               Jump to 2-char combo
 ```
 
+### File Tree (nvim-tree)
+```
+a               Create file (add / suffix for folder)
+d               Delete
+r               Rename
+c               Copy
+x               Cut
+p               Paste
+```
+
 ### Git
 ```
 ,gs             Git status
