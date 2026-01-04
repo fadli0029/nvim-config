@@ -16,6 +16,12 @@ keymap.set({ "n", "v", "o" }, "f", "", {
   desc = "nvim-hop char2",
 })
 
+keymap.set({ "n", "v", "o" }, "<leader>j", function()
+  hop.hint_lines_skip_whitespace()
+end, {
+  desc = "hop to line",
+})
+
 vim.api.nvim_create_autocmd("ColorScheme", {
   pattern = "*",
   callback = function()

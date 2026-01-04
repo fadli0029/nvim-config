@@ -1,11 +1,9 @@
 local nvim_notify = require("notify")
 nvim_notify.setup {
-  -- Animation style
   stages = "fade_in_slide_out",
-  -- Default timeout for notifications
   timeout = 1500,
-  background_colour = "#2E3440",
-  -- Add this line to provide the missing parameter
-  max_width = 100,  -- or any other reasonable value
+  background_colour = "#0A0A0C",
+  max_width = 80,
+  render = "wrapped-compact",
 }
 vim.notify = nvim_notify

@@ -204,15 +204,31 @@ api.nvim_create_autocmd("ColorScheme", {
   pattern = "*",
   desc = "Define or overrride some highlight groups",
   callback = function()
-    -- Pitch black background for OLED
-    vim.api.nvim_set_hl(0, "Normal", { bg = "#000000" })
-    vim.api.nvim_set_hl(0, "NormalNC", { bg = "#000000" })
-    vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#000000" })
-    vim.api.nvim_set_hl(0, "SignColumn", { bg = "#000000" })
-    vim.api.nvim_set_hl(0, "EndOfBuffer", { fg = "#000000", bg = "#000000" })
-    vim.api.nvim_set_hl(0, "LineNr", { bg = "#000000" })
-    vim.api.nvim_set_hl(0, "CursorLineNr", { bg = "#000000" })
-    vim.api.nvim_set_hl(0, "FoldColumn", { bg = "#000000" })
+    -- Transparent background (inherits terminal glassmorphism)
+    vim.api.nvim_set_hl(0, "Normal", { bg = "NONE" })
+    vim.api.nvim_set_hl(0, "NormalNC", { bg = "NONE" })
+    vim.api.nvim_set_hl(0, "SignColumn", { bg = "NONE" })
+    vim.api.nvim_set_hl(0, "EndOfBuffer", { fg = "#303030", bg = "NONE" })
+    vim.api.nvim_set_hl(0, "LineNr", { bg = "NONE" })
+    vim.api.nvim_set_hl(0, "CursorLineNr", { bg = "NONE" })
+    vim.api.nvim_set_hl(0, "FoldColumn", { bg = "NONE" })
+
+    -- Glassmorphism for floating windows (works with winblend)
+    vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#0A0A0C" })
+    vim.api.nvim_set_hl(0, "FloatBorder", { fg = "#505050", bg = "#0A0A0C" })
+
+    -- Glassmorphism for popup menu (works with pumblend)
+    vim.api.nvim_set_hl(0, "Pmenu", { bg = "#0A0A0C", fg = "#D0D0D0" })
+    vim.api.nvim_set_hl(0, "PmenuSel", { bg = "#2A2A2C", fg = "#FFFFFF" })
+    vim.api.nvim_set_hl(0, "PmenuSbar", { bg = "#1A1A1C" })
+    vim.api.nvim_set_hl(0, "PmenuThumb", { bg = "#404040" })
+
+    -- indent-blankline highlights (required for transparent bg)
+    vim.api.nvim_set_hl(0, "IblIndent", { fg = "#303030" })
+    vim.api.nvim_set_hl(0, "IblScope", { fg = "#505050" })
+
+    -- Dashboard header color (matches rofi accent #7AA2F7)
+    vim.api.nvim_set_hl(0, "DashboardHeader", { fg = "#7AA2F7" })
 
     vim.cmd([[
       " For yank highlight
@@ -221,9 +237,6 @@ api.nvim_create_autocmd("ColorScheme", {
       " For cursor colors
       highlight Cursor cterm=bold gui=bold guibg=#00c918 guifg=black
       highlight Cursor2 guifg=red guibg=red
-
-      " For floating windows border highlight
-      highlight FloatBorder guifg=LightGreen guibg=NONE
 
       " highlight for matching parentheses
       highlight MatchParen cterm=bold,underline gui=bold,underline

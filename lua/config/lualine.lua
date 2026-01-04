@@ -8,15 +8,10 @@ local function spell()
   return ""
 end
 
---- show indicator for Chinese IME
 local function ime_state()
   if vim.g.is_mac then
-    -- ref: https://github.com/vim-airline/vim-airline/blob/master/autoload/airline/extensions/xkblayout.vim#L11
     local layout = fn.libcall(vim.g.XkbSwitchLib, "Xkb_Switch_getXkbLayout", "")
 
-    -- We can use `xkbswitch -g` on the command line to get current mode.
-    -- mode for macOS builtin pinyin IME: com.apple.inputmethod.SCIM.ITABC
-    -- mode for Rime: im.rime.inputmethod.Squirrel.Rime
     local res = fn.match(layout, [[\v(Squirrel\.Rime|SCIM.ITABC)]])
     if res ~= -1 then
       return "[CN]"
@@ -35,7 +30,6 @@ local function trailing_space()
 
   for i = 1, fn.line("$") do
     local linetext = fn.getline(i)
-    -- To prevent invalid escape error, we wrap the regex string with `[[]]`.
     local idx = fn.match(linetext, [[\v\s+$]])
 
     if idx ~= -1 then
@@ -93,12 +87,10 @@ local diff = function()
   local add_num = git_status.added
 
   local info = { added = add_num, modified = modify_num, removed = remove_num }
-  -- vim.print(info)
   return info
 end
 
 local virtual_env = function()
-  -- only show virtual env for Python
   if vim.bo.filetype ~= "python" then
     return ""
   end
@@ -151,7 +143,6 @@ require("lualine").setup {
       {
         "branch",
         fmt = function(name, _)
-          -- truncate branch name in case the name is too long
           return string.sub(name, 1, 20)
         end,
       },
@@ -163,8 +154,9 @@ require("lualine").setup {
     lualine_c = {
       {
         "filename",
+        path = 1,
         symbols = {
-          readonly = "[🔒]",
+          readonly = "[]",
         },
       },
       {
@@ -188,7 +180,7 @@ require("lualine").setup {
       {
         "diagnostics",
         sources = { "nvim_diagnostic" },
-        symbols = { error = "❌ ", warn = "🫨 ", info = "🤔 ", hint = "💡 " },
+        symbols = { error = "● ", warn = "▲ ", info = "■ ", hint = "◆ " },
       },
     },
     lualine_y = {

@@ -4,11 +4,24 @@ set commentstring=//\ %s
 set formatoptions-=o
 set formatoptions-=r
 
-" Set indentation to 4 spaces for C++ files
-set tabstop=4       " number of visual spaces per TAB
-set softtabstop=4   " number of spaces in tab when editing
-set shiftwidth=4    " number of spaces to use for autoindent
-set expandtab       " expand tab to spaces
+" Match ~/Scripts/.clang-format (Google style)
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
+set expandtab
+
+" cinoptions to approximate Google C++ style
+" g1     - access specifiers (public/private) at 1 space indent (simulates -1 offset)
+" N-s    - no namespace indent (NamespaceIndentation: None)
+" E-s    - no extern "C" indent
+" (0     - align to first char after unclosed paren
+" W2s    - 4-space continuation when paren at EOL (ContinuationIndentWidth: 4)
+" :0,l1  - case labels at switch level, align with label not statement
+set cinoptions=g1,N-s,E-s,(0,W2s,:0,l1
+
+" Insert comment with timestamp (type //d or /*d in insert mode)
+inoremap <buffer> //d <C-R>=strftime('// [%Y-%m-%d %H:%M] ')<CR>
+inoremap <buffer> /*d <C-R>=strftime('/* [%Y-%m-%d %H:%M] ')<CR>
 
 nnoremap <silent> <buffer> <F9> :call <SID>compile_run_cpp()<CR>
 

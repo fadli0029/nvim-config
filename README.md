@@ -67,7 +67,8 @@ K               Hover documentation
 ,fh             Search vim help
 ,ft             Buffer tags
 <space>s        Toggle file tree
-f               Jump to 2-char combo
+f               Jump to 2-char combo (hop)
+,j              Jump to any line (hop)
 ```
 
 ### File Tree (nvim-tree)
@@ -252,7 +253,7 @@ Yanky provides yank history. After pasting, cycle through previous yanks with `[
 Custom: `iu`/`au` (URL), `iB` (buffer), `ic`/`ac` (markdown code block). Plugins add more: targets.vim (pairs), vim-indent-object, vim-pythonsense.
 
 ### Motions
-`j`/`k` handle wrapped lines. nvim-hop (`f`) jumps to any visible 2-char combo.
+`j`/`k` handle wrapped lines. nvim-hop: `f` jumps to any 2-char combo, `,j` jumps to any visible line.
 
 ### Terminal
 `<Esc>` exits terminal mode. Python `<F9>` runs file in iPython split. C++ `<F9>` compiles and runs.
